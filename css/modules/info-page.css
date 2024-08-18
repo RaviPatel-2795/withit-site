@@ -1,0 +1,105 @@
+/**** MAIN CONTAINER ****/
+
+.main-container {
+    max-width: 1000px;
+    height: max-content;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 60px 200px;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    text-transform: uppercase;
+}
+
+.main-container-border {
+    padding: 25px 0px 25px 0px;
+    border-top: var(--text-color) 4px dashed;
+    border-bottom: var(--text-color) 4px dashed;
+    transition: 0.5s;
+}
+
+.main-container-inner {
+    padding: 0px 25px;
+}
+
+.main-container h1 {
+    font-size: 70px;
+    line-height: 48px;
+    margin-top: 5px;
+    color: var(--text-color);
+    transition: 0.5s;
+}
+
+.main-container h2,
+.main-container h3,
+.main-container p,
+.main-container li {
+    font-size: 14px;
+    color: var(--text-color);
+    transition: 0.5s;
+}
+
+.main-container h2 {
+    font-size: 20px;
+}
+
+.main-container h3 {
+	font-weight: bold;
+}
+
+/**** MAIN CONTAINER MEDIA QUERIES ****/
+
+@media screen and (max-width: 1500px) {
+    .main-container {
+        padding: 60px 60px 60px 240px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .main-container {
+        padding: 60px 30px 60px 80px;
+        margin-top: 100px;
+    }
+
+    .main-container h1 {
+        font-size: 50px;
+        line-height: 35px;
+    }
+}
+
+@media screen and (max-width: 510px) {
+    .main-container h1 {
+        font-size: 45px;
+        line-height: 32px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+	.main-container h2 {
+		font-size: 14px;
+	}
+
+	.main-container h3,
+	.main-container p,
+	.main-container li {
+		font-size: 10px;
+	}
+
+	.main-container {
+		padding: 60px 30px 60px 80px;
+	}
+
+	.main-container-border {
+		padding: 10px 0px;
+	}
+
+	.main-container-inner {
+		padding: 0px 10px;
+	}
+}

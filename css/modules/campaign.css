@@ -1,0 +1,185 @@
+/**** CAMPAIGN PAGE ****/
+
+.campaign-grid-container {
+    max-width: 1200px;
+    height: fit-content;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0px;
+    right: 0;
+    z-index: 1;
+    text-transform: uppercase;
+    padding: 60px 100px 60px 250px;
+    transition: all 0.5s;
+}
+
+.grid {  
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 3em;
+    grid-auto-flow: row;
+    grid-template-areas: 
+    "C1 C1 . . . C2 C2 ."
+    "C1 C1 C3 C3 . C2 C2 ."
+    "C4 C4 C3 C3 C5 C5 C5 C5"
+    "C4 C4 . . C5 C5 C5 C5"; 
+}
+
+
+.grid-item {  
+	height: min-content;
+}
+  
+.C1 { 
+    grid-area: C1; 
+}
+
+.C2 {
+    grid-area: C2; 
+}
+
+.C3 {
+    grid-area: C3;
+}
+
+.C5 {
+    grid-area: C5; 
+}
+
+.C4 {
+    grid-area: C4; 
+}
+
+.campaign-container .campaign-container-blog-link {
+	text-decoration: none;
+}
+
+.campaign-container .campaign-date {
+    margin: 0px 0px -5px 0px;
+    font-size: 13px;
+    color: var(--text-color);
+    transition: all 0.5s;
+}
+
+.campaign-container .campaign-title {
+    margin: 0px 0px 10px 0px;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: var(--text-color);
+    transition: all 0.5s;
+}
+
+#C1-img {
+	background-image: url("/media/images/campaign_images/withit_2_thumbnail_p.webp");
+	background-size: cover;
+	aspect-ratio: 264 / 310;
+}
+
+#C2-img {
+	background-image: url("/media/images/campaign_images/concept_thumbnail_p.webp");
+	background-size: cover;
+	aspect-ratio: 264 / 310;
+}
+
+#C3-img {
+	background-image: url("/media/images/campaign_images/palestine_thumbnail_p.webp");
+	background-size: cover;
+	aspect-ratio: 264 / 310;
+}
+
+#C4-img {
+	background-image: url("/media/images/campaign_images/photoshoot_thumbnail_p.webp");
+	background-size: cover;
+	aspect-ratio: 264 / 310;
+}
+
+#C5-img {
+	background-image: url("/media/images/campaign_images/views_thumbnail_l.webp");
+	background-size: cover;
+	aspect-ratio: 576 / 365;
+}
+
+#C1-img canvas,
+#C2-img canvas,
+#C3-img canvas,
+#C4-img canvas {
+	width: 100%;
+	aspect-ratio: 264 / 310;
+}
+
+#C5-img canvas {
+	width: 100%;
+	aspect-ratio: 576 / 365;
+}
+
+.campaign-img {
+	width: 100%;
+	margin: 0px 0px 10px 0px;
+	transition: all 0.4s;
+}
+
+.campaign-img:hover {
+	box-shadow: 0px 15px 15px 0 rgba(0,0,0,0.4);
+	rotate: 2deg;
+	transition: all 0.4s;
+}
+
+canvas{
+	transition: all 0.4s;
+} 
+
+.campaign-img:hover > canvas {
+	box-shadow: 0px 10px 10px 0 rgba(0,0,0,0.2);
+	transition: all 0.4s;
+}
+
+.campaign-container .campaign-desc {
+    font-size: 14px;
+    margin: 0px;
+    padding: 15px 10px;
+    width: calc(100% - 20px);
+    color: var(--text-color);
+    border-top: var(--text-color) 4px dashed;
+    border-bottom: var(--text-color) 4px dashed;
+    transition: all 0.5s;
+}
+
+
+@media screen and (max-width: 1100px) {
+    .grid {  
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-areas: 
+        "C1 C1 C3 C3 C2 C2"
+        "C1 C1 C3 C3 C2 C2"
+        "C4 C4 C5 C5 C5 C5"
+        "C4 C4 C5 C5 C5 C5";
+    }
+}
+
+
+@media screen and (max-width: 850px) {
+    .campaign-grid-container {
+        padding: 60px 45px 60px 90px;
+        transition: all 0.5s;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .grid {  
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "C1"
+        "C2"
+        "C3"
+        "C4"
+        "C5";
+    }
+}

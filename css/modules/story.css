@@ -1,0 +1,161 @@
+/**** OUR STORY PAGE ****/
+
+.story-container {
+    max-width: 500px;
+    padding: 60px 250px;
+    max-height: fit-content;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    text-transform: uppercase;
+    transition: all 0.5s;
+	pointer-events:none;
+}
+
+.story-container p {
+    font-size: 14px;
+    color: var(--text-color);
+    transition: 0.5s;
+}
+
+.story-container-border {
+    padding: 0px 0px;
+    /* border-top: var(--text-color) 4px dashed;
+    border-bottom: var(--text-color) 4px dashed; */
+    transition: 0.5s;
+}
+
+.story-container-inner {
+	text-align: center;
+    padding: 0px 25px;
+}
+
+.signature-container {
+	width: 100%;
+	text-align: center;
+}
+
+
+.signature-container svg {
+	margin-top: 15px;
+	margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+	fill: var(--text-color);
+	transition: all 0.5s;
+}
+
+@media screen and (max-width: 850px) {
+	.story-container {
+		padding: 60px 90px;
+	}
+
+}
+
+@media screen and (max-width: 500px) {
+	.story-container {
+		padding: 60px 60px;
+	}
+
+	.story-container-inner svg {
+		width: 90px;
+	}
+}
+
+@media screen and (max-height: 800px) {
+    .story-container {
+        margin-top: 100px;
+    }
+}
+
+#story-photo-bg{
+	position: absolute;
+	top: 150px;
+	right: 3%;
+	height: calc(95lvh - 150px);
+	width: calc(100% - 300px);
+	z-index: 10;
+	opacity: 0;
+	background-color: rgba(0,0,0,0);
+	transition: opacity 0.5s;
+}
+
+.storyActive {
+	opacity: 1 !important;
+	transition: opacity 0.5s;
+}
+
+.draggable {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	z-index: 1;
+	width: 400px;
+	min-height: auto;
+	touch-action: none;
+	user-select: none;
+	transform: translate(0px, 0px);
+	pointer-events: all;
+	scale: 1;
+	filter: drop-shadow(10px 10px 20px rgba(0,0,0,0.5));
+	opacity: 0;
+	transition: opacity, width 200ms;
+}
+
+.draggable:hover {
+		rotate: -1deg;
+		transition: width 500ms, filter 500ms, opacity 500ms, rotate 300ms ease-in;
+}
+
+.loaded-in {
+	width: 300px;
+	filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.5));
+	opacity: 1;
+	transition: width 500ms, filter 500ms, opacity 500ms, rotate 300ms ease-in;
+}
+
+.picked-up {
+	width: 400px !important;
+	filter: drop-shadow(10px 10px 20px rgba(0,0,0,0.5)) !important;
+	opacity: 1;
+	animation: none !important;
+	transition: width 500ms, filter 500ms, opacity 500ms, rotate 300ms ease-in;
+}
+
+@media screen and (max-width: 1920px) {
+	.draggable {
+		scale: 0.8;
+	}
+}
+
+@media screen and (max-width: 850px) {
+	.draggable {
+		scale: 0.7;
+	}
+	
+	.story-container {
+		margin-top: 100px;
+	}
+
+	#story-photo-bg {
+		width: calc(100%);
+		height: calc(90lvh - 65px);
+		top: auto;
+		bottom: 15px;
+		left: 0;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.story-container p {
+		font-size: 12px;
+	}
+}

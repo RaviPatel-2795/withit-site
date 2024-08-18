@@ -1,0 +1,340 @@
+/**** LOADING SCREEN ****/
+
+#loading {
+    background-color: #F9F7E0;
+    position: fixed;
+	opacity: 1;
+    width: 100%;
+    height: 100%;
+    z-index: 9999998;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+	transition: all 0.5s;
+}
+
+@keyframes draw {
+	0% {
+	  clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 0% 0%);
+	}
+	90% {
+	  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+	}
+}
+  
+#animated-svg {
+	width: 65px;
+	height: auto;
+	animation: draw 1500ms linear infinite alternate;
+}
+
+  
+/**** SPLASH SCREEN ****/
+
+#splash-screen {
+    background: url("../../media/images/splash_images/splash_screen.webp") no-repeat right center;
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 9999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#splash-screen-container {
+    max-width: 450px;
+	width: 100%;
+	padding: 20px;
+    z-index: 100;
+	transition: all 0.5s;
+    cursor: pointer;
+}
+
+#splash-screen-logo {
+	position: relative;
+    max-width: 380px;
+	aspect-ratio: 500 / 183;
+    margin: 0px auto 20px auto;
+}
+
+#splash-screen-logo img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#overlay {
+	z-index: 1;
+	-webkit-animation: neon-flicker 2000ms linear reverse infinite;
+	-moz-animation: neon-flicker 2000ms linear reverse infinite;
+	animation: neon-flicker 2000ms linear reverse infinite;
+}
+
+#underlay {
+	z-index: 0;
+}
+
+.inactive-transition {
+	opacity: 0 !important;
+	transition: all 0.5s;
+}
+
+.inactive {
+	display: none !important;
+	visibility: hidden;
+}
+
+.tvShow {
+	display: inline;
+}
+
+@keyframes neon-flicker {
+	0% {
+		opacity: 0.4;
+	}
+	5% {
+		opacity: 0.5;
+	}
+	10% {
+		opacity: 0.6;
+	}
+	15% {
+		opacity: 0.85;
+	}
+	25% {
+		opacity: 0.5;
+	}
+	30% {
+		opacity: 1;
+	}
+	35% {
+		opacity: 0.1;
+	}
+	40% {
+		opacity: 0.25;
+	}
+	45% {
+		opacity: 0.5;
+	}
+	60% {
+		opacity: 1;
+	}
+	70% {
+		opacity: 0.85;
+	}
+	80% {
+		opacity: 0.4;
+	}
+	90% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+  
+@-webkit-keyframes neon-flicker {
+	0% {
+		opacity: 0.4;
+	}
+	5% {
+		opacity: 0.5;
+	}
+	10% {
+		opacity: 0.6;
+	}
+	15% {
+		opacity: 0.85;
+	}
+	25% {
+		opacity: 0.5;
+	}
+	30% {
+		opacity: 1;
+	}
+	35% {
+		opacity: 0.1;
+	}
+	40% {
+		opacity: 0.25;
+	}
+	45% {
+		opacity: 0.5;
+	}
+	60% {
+		opacity: 1;
+	}
+	70% {
+		opacity: 0.85;
+	}
+	80% {
+		opacity: 0.4;
+	}
+	90% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@-moz-keyframes neon-flicker {
+	0% {
+		opacity: 0.4;
+	}
+	5% {
+		opacity: 0.5;
+	}
+	10% {
+		opacity: 0.6;
+	}
+	15% {
+		opacity: 0.85;
+	}
+	25% {
+		opacity: 0.5;
+	}
+	30% {
+		opacity: 1;
+	}
+	35% {
+		opacity: 0.1;
+	}
+	40% {
+		opacity: 0.25;
+	}
+	45% {
+		opacity: 0.5;
+	}
+	60% {
+		opacity: 1;
+	}
+	70% {
+		opacity: 0.85;
+	}
+	80% {
+		opacity: 0.4;
+	}
+	90% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+#splash-screen-tape {
+	margin-bottom: 0px;
+	text-align: center;
+}
+
+#splash-screen-tape #tape-desktop {
+	max-width: 600px;
+	width: 100%;
+	aspect-ratio: 600 / 93;
+}
+
+#splash-screen-tape #tape-mobile {
+	display: none;
+	max-width: 450px;
+	width: 100%;
+	aspect-ratio: 499 / 257;
+}
+
+/**** TYPED JS CSS ****/
+
+#typed-container {
+	top: 0;
+	margin-top: 20px;
+	position: absolute;
+	width: 205px;
+	font-size: 18px;
+	cursor: pointer;
+}
+
+#splash-screen-text {
+    color: #fffb00;
+	font-family: ledType;
+	line-height: 25px;
+    font-weight: 400;
+    display: inline-block;
+    filter: drop-shadow(-2px 2px 5px rgba(0, 0, 0, 0.5));
+    -webkit-filter: drop-shadow(-2px 2px 5px rgba(0, 0, 0, 0.5));
+}
+
+#typed-container .typed-cursor {
+    opacity: 1;
+    color: #fffb00;
+	font-size: 26px;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+	#splash-screen-container {
+		transform: scale(0.8);
+		transition: all 0.5s;
+	}
+
+	#splash-screen-logo {
+		max-width: 380px;
+		margin: 0px auto 20px auto;
+	}
+
+	#tape-desktop {
+		display: none;
+	}
+
+	#splash-screen-tape {
+		padding: 0px;
+	}
+
+	#tape-mobile {
+		display: inline !important;
+	}
+	
+}

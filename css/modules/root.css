@@ -1,0 +1,62 @@
+@font-face {
+	font-family: ledType;
+	src: url(../../media/fonts/led_type.ttf);
+}
+
+@font-face {
+	font-family: madmanType;
+	src: url(../../media/fonts/the_typing_of_a_madman.ttf);
+}
+
+:root {
+    --background-color: #F9F7E0;
+    --text-color: #2e0909;
+}
+
+html[data-theme="light"] {
+	--background-color: #F9F7E0;
+    --text-color: #2e0909;
+    --btn-bg: #2e0909;
+    --btn-bg-hover: #461212;
+    --btn-text: #F9F7E0;
+    --logo-opacity: 0.8;
+	--arrow-filter: invert(0%);
+	--logo-shadow: drop-shadow(-2px 2px 5px rgba(0, 0, 0, 0.15));
+	--ticket-shop-shadow: drop-shadow(-7px 6px 6px rgba(0, 0, 0, 0.3));
+	--payment-logos: url(../../media/images/brand_images/payment_icons_dark.png);
+}
+
+html[data-theme="dark"] {
+	--background-color: #131313;
+    --text-color: #F9F7E0;
+    --btn-bg: #F9F7E0;
+    --btn-bg-hover: #fff;
+    --btn-text: #2e0909;
+    --logo-opacity: 1;
+	--arrow-filter: invert(100%);
+	--logo-shadow: drop-shadow(0px 0px 10px rgba(249, 249, 244, 0.8));
+	--ticket-shop-shadow: drop-shadow(-7px 6px 6px rgba(0, 0, 0, 0.8));
+	--payment-logos: url(../../media/images/brand_images/payment_icons_light.png);
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+	text-transform: uppercase !important;
+    font-family: "Poppins", sans-serif;
+    transition: 0.5s;
+	background-color: var(--background-color);
+	overflow-x: hidden;
+}
+
+a:-webkit-any-link:focus {
+    outline-offset: 0px;
+    outline: none;
+}
+
+.invertText {
+    color: var(--btn-text);
+    transition: 0.5s;
+}

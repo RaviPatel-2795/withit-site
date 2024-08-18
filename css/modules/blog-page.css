@@ -1,0 +1,52 @@
+.main-container h1.blogTitle {
+    font-size: 40px;
+    line-height: 35px;
+    margin-top: 5px;
+    color: var(--text-color);
+    transition: color 0.5s;
+}
+
+.main-container .blogImg,
+.main-container .blogImg img {
+	height: 100%;
+	width: 100%;
+}
+
+.main-container .blogImg {
+	display: flex;
+	padding: 30px 0px;
+    border-top: var(--text-color) 4px dashed;
+    transition: border-top 0.5s;
+}
+
+.main-container .blogAuthor p {
+	margin: 0px;
+	padding: 0px 0px 15px 0px;
+}
+
+#blogImgMobile {
+	display: none;
+}
+
+@media screen and (max-width: 600px) {
+	.main-container .blogImg {
+		padding: 25px 0px;
+	}
+	
+	.blogAuthor p {
+		font-size: 14px;
+	}
+
+	.main-container h1.blogTitle {
+		font-size: 30px;
+		line-height: 25px;
+	}
+
+	#blogImgDesktop {
+		display: none;
+	}
+
+	#blogImgMobile {
+		display: block;
+	}
+}
