@@ -1,12 +1,11 @@
-import kampos from 'https://cdn.skypack.dev/pin/kampos@v0.5.1-oLViaZfcvmyPBuEcPTB3/mode=imports,min/optimized/kampos.js';
+import kampos from 'https://cdn.jsdelivr.net/npm/kampos@0.5.1/+esm';
 
 export function dataTheme() {
-
 	const darkMode = 'dark';
 	const lightMode = 'light';
 	const defaultMode = lightMode;
 
-	const themeToggle = document.getElementById("themeModeCheck");
+	const themeToggle = document.getElementById('themeModeCheck');
 
 	const mapTarget = document.querySelector('#target');
 	// let MAP_WIDTH = 100;
@@ -18,21 +17,21 @@ export function dataTheme() {
 		SMOKE: {
 			octaves: 8,
 			edge: 0.7,
-			cellFactor: 4
+			cellFactor: 4,
 		},
 		LIQUID: {
 			octaves: 1,
 			edge: 0.03,
-			cellFactor: 2
-		}
-	}
+			cellFactor: 2,
+		},
+	};
 
 	mapTarget.width = window.innerWidth;
 	mapTarget.height = window.innerHeight;
 
-	window.addEventListener('resize', function() {
+	window.addEventListener('resize', function () {
 		resizeCanvas();
-	})
+	});
 
 	function resizeCanvas() {
 		mapTarget.width = window.innerWidth;
@@ -51,7 +50,7 @@ export function dataTheme() {
 			sessionStorage.setItem('dataTheme', defaultMode);
 		}
 		setMode(storedDataTheme);
-	};
+	}
 
 	themeInit();
 
@@ -63,14 +62,13 @@ export function dataTheme() {
 			imageFromSrc = document.querySelector('#source-to').dataset.src;
 			imageToSrc = document.querySelector('#source-from').src;
 			themeToggle.checked = true;
-
 		} else if (mode === lightMode) {
 			document.documentElement.setAttribute('data-theme', lightMode);
 			imageFromSrc = document.querySelector('#source-from').src;
 			imageToSrc = document.querySelector('#source-to').dataset.src;
 			themeToggle.checked = false;
 		}
-	};
+	}
 
 	// Change sessionStorage for dataTheme on click
 
@@ -85,15 +83,15 @@ export function dataTheme() {
 
 	// Load images
 
-	function loadImage (src) {
-		return new Promise(resolve => {
+	function loadImage(src) {
+		return new Promise((resolve) => {
 			const img = new Image();
 			img.crossOrigin = 'anonymous';
-	
+
 			img.onload = function () {
 				resolve(this);
 			};
-	
+
 			img.src = src;
 		});
 	}
@@ -105,7 +103,7 @@ export function dataTheme() {
 	let AMPLITUDE_X = ANIMATIONS[TYPE].cellFactor / 1000;
 	let AMPLITUDE_Y = ANIMATIONS[TYPE].cellFactor / 1000;
 
-	const frequency = {x: AMPLITUDE_X, y: AMPLITUDE_Y};
+	const frequency = { x: AMPLITUDE_X, y: AMPLITUDE_Y };
 
 	/* increase number on range (1, 8) to go from water-like effect into clouds-like one */
 	const octaves = ANIMATIONS[TYPE].octaves;
@@ -118,10 +116,14 @@ export function dataTheme() {
 		noise: kampos.noise.simplex,
 		octaves,
 		frequency,
-		isFractal
+		isFractal,
 	});
 
-	const dissolveMap = new kampos.Kampos({ target: mapTarget, effects: [turbulence], noSource: true });
+	const dissolveMap = new kampos.Kampos({
+		target: mapTarget,
+		effects: [turbulence],
+		noSource: true,
+	});
 
 	/* create the dissolve map by generating a single noise frame */
 	dissolveMap.draw();
@@ -134,25 +136,22 @@ export function dataTheme() {
 	dissolve.map = mapTarget;
 
 	/* init kampos */
-	const instance = new kampos.Kampos({target, effects:[dissolve]});
+	const instance = new kampos.Kampos({ target, effects: [dissolve] });
 
 	/* make sure videos are loaded and playing*/
-	Promise.all([
-		loadImage(imageFromSrc),
-		loadImage(imageToSrc),
-	])
-		.then((images) => {
+	Promise.all([loadImage(imageFromSrc), loadImage(imageToSrc)]).then(
+		(images) => {
 			let width = mapTarget.width;
 			let height = mapTarget.height;
 
-			window.addEventListener('resize', function() {
+			window.addEventListener('resize', function () {
 				getCanvasSize();
 			});
 
 			function getCanvasSize() {
 				width = mapTarget.width;
 				height = mapTarget.height;
-			};
+			}
 
 			let index = 0;
 
@@ -161,7 +160,7 @@ export function dataTheme() {
 			}
 
 			/* paint initial scene */
-			instance.setSource({media: images[0], width, height});
+			instance.setSource({ media: images[0], width, height });
 			dissolve.to = images[1];
 			instance.draw();
 
@@ -170,9 +169,8 @@ export function dataTheme() {
 			}
 
 			function changeImage(prevImage, nextImage) {
-				
 				/* set media source */
-				instance.setSource({media: prevImage, width, height});
+				instance.setSource({ media: prevImage, width, height });
 
 				/* set media to transition into */
 				dissolve.to = nextImage;
@@ -180,7 +178,7 @@ export function dataTheme() {
 				const start = performance.now();
 
 				/* start kampos */
-				instance.play(function draw () {
+				instance.play(function draw() {
 					const time = performance.now() - start;
 
 					/* this is invoked once in every animation frame */
@@ -190,12 +188,14 @@ export function dataTheme() {
 					}
 
 					/* you can reduce time factor for slower transition, or increase for faster */
-					const progress = easeOutCubic(time * (DYNAMIC ? 2e-4 : 4e-4) * 4);
+					const progress = easeOutCubic(
+						time * (DYNAMIC ? 2e-4 : 4e-4) * 4,
+					);
 					dissolve.progress = progress;
 
 					if (progress * 100 >= 99.9) {
 						instance.stop();
-						instance.setSource({media: prevImage, width, height});
+						instance.setSource({ media: prevImage, width, height });
 
 						// bind the event again
 						bindClick();
@@ -226,7 +226,7 @@ export function dataTheme() {
 			}
 
 			function click(event) {
-				const {offsetX} = event;
+				const { offsetX } = event;
 
 				themeToggle.disabled = true;
 
@@ -239,20 +239,20 @@ export function dataTheme() {
 
 			function bindClick() {
 				themeToggle.disabled = false;
-				themeToggle.addEventListener('click', click, {once: true});
+				themeToggle.addEventListener('click', click, { once: true });
 			}
 
 			bindClick();
-		});
-
+		},
+	);
 }
 
-	// https://www.wix.engineering/post/introducing-kampos-a-tiny-and-fast-effects-compositor
+// https://www.wix.engineering/post/introducing-kampos-a-tiny-and-fast-effects-compositor
 
-    // https://github.com/wix/kampos/
+// https://github.com/wix/kampos/
 
-	// https://wix.github.io/kampos/demo/
+// https://wix.github.io/kampos/demo/
 
-	// https://wix.github.io/kampos/docs/
+// https://wix.github.io/kampos/docs/
 
-    // https://css-tricks.com/nailing-that-cool-dissolve-transition/ 
+// https://css-tricks.com/nailing-that-cool-dissolve-transition/
